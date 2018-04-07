@@ -1,14 +1,13 @@
-name:                haskell-lexer
+name:                haskell-lexer-parser-interpreter
 version:             0.1.0.0
-github:              "githubuser/haskell-lexer"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
+github:              "hazurl/haskell-lexer-parser-interpreter"
+license:             MIT
+author:              "Hazurl"
+maintainer:          "jules.ricou.jr@gmail.com"
+copyright:           "2018 Hazurl"
 
 extra-source-files:
 - README.md
-- ChangeLog.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,7 +16,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on Github at <https://github.com/githubuser/haskell-lexer#readme>
+description:         Please see the README on Github at <https://github.com/hazurl/haskell-lexer-parser-interpreter#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -28,7 +27,7 @@ library:
   source-dirs: src
 
 executables:
-  haskell-lexer-exe:
+  haskell-lexer-parser-interpreter-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -36,10 +35,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell-lexer
+    - haskell-lexer-parser-interpreter
 
 tests:
-  haskell-lexer-test:
+  haskell-lexer-parser-interpreter-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -47,4 +46,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell-lexer
+    - haskell-lexer-parser-interpreter
