@@ -1,0 +1,70 @@
+<program> :=
+    <instructions_list> | 
+    empty
+;
+
+<instructions_list> :=
+    <instruction_line> <instructions_list> |
+    '\n' |
+    empty
+;
+
+<instruction_line> :=
+    <instruction> '\n'
+;
+
+<instruction> :=
+    <var_declaration> |
+    <ident> '=' <expression> |
+    <print_statement> |
+    <if_statement> |
+    <for_statement>
+;
+
+<var_declaration> :=
+    <type> <ident> ['=' <expression>]
+;
+
+<type> :=
+    <ident>
+;
+
+<ident> :=
+    (a-zA-Z_) (a-zA-Z0-9_)*
+;
+
+<expression> :=
+    '(' <expression> ')' |
+    [unary_operator] <value> [<binary_operator> <expression>] |
+;
+
+<value> :=
+    <litteral> |
+    <ident>
+;
+
+<litteral> :=
+    (0-9)+ ['.' (0-9)*]
+    '"' (^'"')* '"'
+;
+
+<unary_operator> :=
+    '!' | '-'
+;
+
+<binary_operator> :=
+    '+' | '-' | '*' | '/'
+    '<' | '>' | '<=' | '>=' | '==' | '!=' | '||' | '&&'
+;
+
+<print_statement> :=
+    'print' <expression>
+;
+
+<if_statement> :=
+    'if' <expression> 'then' '\n' <instructions_list> '\n' ['else' '\n' <instructions_list> '\n'] 'end'
+;
+
+<for_statement> :=
+    'for' [<var_declaration>] ';' [<expression>] ';' [<expression>] 'then' '\n' <instructions_list> '\n' 'end'
+;
