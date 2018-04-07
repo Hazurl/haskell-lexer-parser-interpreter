@@ -109,6 +109,7 @@ firstJust (f:fs) a = case f a of
     Nothing -> firstJust fs a
     Just r -> Just r 
 
+-- number of useless characters at the start of the list
 uselessChars :: String -> Int 
 uselessChars = length . takeWhile (`elem` " \t")
 
@@ -123,9 +124,6 @@ isDigit x = ('0' <= x) && ('9' >= x)
 
 isAlphaNum :: Char -> Bool
 isAlphaNum x = isDigit x || isAlpha x
-
-isSpace :: Char -> Bool
-isSpace x = x `elem` " \t"
 
 getKeyword :: String -> Token
 getKeyword "then"  = Then
@@ -148,7 +146,7 @@ eatUntil :: Char -> String -> Maybe String
 eatUntil c s = 
     let r = takeWhile (/= c) s
         ok = (length s) /= (length r)
-    in toMaybe ok r
+    in toMaybe ok r -- if there is the actual character c at the end
 
 eater :: String -> Token -> String -> Maybe (Token, Int)
 eater r t s | isPrefix r s = Just (t, length r)
